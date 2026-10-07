@@ -1,0 +1,27 @@
+:root,
+[data-theme="console"] {
+  --bg:  #14306e;
+  --panel:#0b1d4a;
+  --line: #3d6fd1;
+  --text: #e8f0ff;
+  --accent: #4fc3f7;
+  --accent2: #ffd23f;
+}
+
+[data-theme="arcade"] {
+  --bg: #140c2b;
+  --panel: #2a1650;
+  --line: #5b3a99;
+  --text: #f4eaff;
+  --accent: #ff3ea5;
+  --accent2: #3df5e0;
+}
+
+[data-theme="gameboy"] {
+  --bg: #0f380f;
+  --panel: #306230;
+  --line: #8bac0f;
+  --text: #9bbc0f;
+  --accent: #9bbc0f;
+  --accent2: #8bac0f;
+}
