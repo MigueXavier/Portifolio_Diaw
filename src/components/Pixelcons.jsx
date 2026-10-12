@@ -1,7 +1,13 @@
-export default function PixelIcon({ src, size = 128, color = "currentColor" }) {
+export default function PixelIcon({
+  src,
+  size = 128,
+  width = size,
+  height = size,
+  color = "currentColor",
+}) {
   const style = {
-    width: size,
-    height: size,
+    width,
+    height,
     backgroundColor: color,
     WebkitMaskImage: `url(${src})`,
     maskImage: `url(${src})`,

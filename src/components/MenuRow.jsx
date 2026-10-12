@@ -8,9 +8,8 @@ export default function MenuRow({ items, onSelect }) {
     function handleKeyDown(e) {
       if (e.key === "ArrowRight") setFocused((i) => Math.min(i + 1, items.length - 1));
       if (e.key === "ArrowLeft") setFocused((i) => Math.max(i - 1, 0));
-      if (e.key === "Enter") onSelect(items[focused]);
+      if (e.key === "Enter" && !e.repeat) onSelect(items[focused]);
     }
-
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [items, focused, onSelect]);
