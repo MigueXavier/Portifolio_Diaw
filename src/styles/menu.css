@@ -274,6 +274,296 @@
   color: var(--bg);
 }
 
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.85);
+}
+
+/* O jogo é 1200x600 (2:1): a largura acompanha a altura da tela */
+.modal {
+  display: flex;
+  flex-direction: column;
+  width: min(92vw, calc((100vh - 140px) * 2));
+  background: var(--panel);
+  border: 4px solid var(--card-color, var(--accent));
+  box-shadow: 8px 8px 0 var(--line);
+}
+
+.modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  font-size: 12px;
+  color: var(--card-color, var(--accent));
+}
+
+.modal-header button {
+  font: inherit;
+  color: var(--accent);
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+}
+
+.modal-header button:hover { color: var(--accent2); }
+
+.modal-frame {
+  display: block;
+  width: 100%;
+  aspect-ratio: 2 / 1;
+  border: 0;
+  background: #000;
+}
+
+.modal-footer {
+  padding: 12px 16px;
+  font-size: 10px;
+  line-height: 1.5;
+  opacity: 0.7;
+}
+
+.config {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  padding: 48px;
+  overflow-y: auto;
+}
+
+.config-content {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.config-content h2 {
+  margin: 0 0 16px;
+  font-size: 12px;
+  font-weight: normal;
+  color: var(--accent);
+}
+
+.config-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.config-option {
+  font: inherit;
+  font-size: 12px;
+  color: var(--text);
+  background: var(--panel);
+  border: 4px solid var(--line);
+  min-width: 160px;
+  padding: 16px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: transform 0.15s ease, opacity 0.15s ease, border-color 0.15s ease;
+}
+
+.config-option.active {
+  background: var(--card-color);
+  color: var(--bg);
+  opacity: 1;
+}
+
+.config-option.focused {
+  border-color: var(--card-color);
+  box-shadow: 6px 6px 0 var(--line);
+  transform: scale(1.05);
+  opacity: 1;
+}
+
+.swatches i {
+  display: block;
+  width: 20px;
+  height: 20px;
+}
+
+.swatches i:nth-child(1) { background: var(--bg); }
+.swatches i:nth-child(2) { background: var(--panel); }
+.swatches i:nth-child(3) { background: var(--accent); }
+.swatches i:nth-child(4) { background: var(--accent2); }
+
+.config-hint {
+  margin: 0;
+  font-size: 10px;
+  opacity: 0.6;
+}
+
+
+.contact {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  padding: 48px;
+  overflow-y: auto;
+}
+
+.contact-form {
+  margin: auto;
+  width: 100%;
+  max-width: 560px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background: var(--panel);
+  border: 4px solid var(--line);
+  padding: 24px 32px;
+}
+
+.contact-form h1 {
+  margin: 0;
+  font-size: 24px;
+  color: var(--card-color);
+}
+
+.contact-form p {
+  margin: 0;
+  font-family: "VT323", monospace;
+  font-size: 24px;
+  line-height: 1.3;
+}
+
+.contact-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--accent);
+}
+
+.contact-form input,
+.contact-form textarea {
+  font-family: "VT323", monospace;
+  font-size: 24px;
+  color: var(--text);
+  background: var(--bg);
+  border: 4px solid var(--line);
+  padding: 8px 12px;
+  outline: none;
+}
+
+.contact-form textarea {
+  min-height: 160px;
+  resize: vertical;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  border-color: var(--card-color);
+}
+
+.contact-form .hp {
+  position: absolute;
+  left: -9999px;
+}
+
+.contact-form button {
+  align-self: flex-start;
+  font: inherit;
+  font-size: 12px;
+  color: var(--card-color);
+  background: none;
+  padding: 12px 20px;
+  border: 4px solid var(--card-color);
+  box-shadow: 4px 4px 0 var(--line);
+  cursor: pointer;
+}
+
+.contact-form button:hover:not(:disabled) {
+  background: var(--card-color);
+  color: var(--bg);
+}
+
+.contact-form button:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.contact-status {
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.contact-status.success { color: var(--accent2); }
+.contact-status.error { color: #ff6b6b; }
+
+/* Home estilo PS4: menu principal em cima, prévia da seção embaixo */
+.home-screen {
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  gap: 40px;
+  padding-top: 6vh;
+}
+
+.preview {
+  --preview-blur: 3px; /* aumente para desfocar mais */
+  display: flex;
+  gap: 24px;
+  margin: 0 48px;
+
+  opacity: 0.55;
+  pointer-events: none;
+  user-select: none;
+  animation: preview-in 0.3s ease;
+}
+
+.preview-card {
+  --icon: 96px;
+  width: calc(var(--icon) + 40px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  color: var(--text);
+  font-size: 12px;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.preview-card .cover {
+  width: var(--icon);
+  height: var(--icon);
+}
+
+.page {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+ 
+  animation: page-in 0.3s steps(6);
+}
+
+@keyframes page-in {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .page { animation: none; }
+}
+
+@keyframes preview-in {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 0.55; transform: translateY(0); }
+}
+
 @media (max-width: 800px) {
   .project-content {
     flex-direction: column;

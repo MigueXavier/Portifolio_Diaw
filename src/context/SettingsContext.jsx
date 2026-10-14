@@ -13,7 +13,9 @@ export function SettingsProvider({ children }) {
 
   useEffect(() => {
     localStorage.setItem("lang", lang);
-  }, [lang]);
+      document.documentElement.lang = lang;
+}, [lang]);
+
 
   return (
     <SettingsContext.Provider value={{ theme, setTheme, lang, setLang }}>

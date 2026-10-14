@@ -10,10 +10,10 @@ export default function ProfileScreen() {
   return (
     <main className="profile">
       <section className="profile-content">
-        {profile.photo && (
+        {profile.image && (
           <img
             className="profile-photo"
-            src={profile.photo}
+            src={profile.image}
             alt={`Foto de ${profile.label}`}
           />
         )}

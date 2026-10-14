@@ -1,8 +1,12 @@
 import { useEffect, useState } from "react";
 import MenuCard from "./MenuCard";
 
-export default function MenuRow({ items, onSelect }) {
+export default function MenuRow({ items, onSelect, onFocusChange }) {
   const [focused, setFocused] = useState(0);
+
+   useEffect(() => {
+    onFocusChange?.(items[focused]);
+  } , [focused]);
 
   useEffect(() => {
     function handleKeyDown(e) {

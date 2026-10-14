@@ -1,9 +1,12 @@
 import { useEffect } from "react";
 import { Navigate, useParams } from "react-router-dom";
 import { projects } from "../data/projects";
+import { useT } from "../i18n/useT";
+
 
 export default function ProjectScreen() {
   const { id } = useParams();
+  const { t, l } = useT();
   const project = projects.find((p) => p.id === id);
 
   useEffect(() => {
@@ -33,20 +36,20 @@ export default function ProjectScreen() {
         )}
         <div className="project-text">
           <h1>{project.label}</h1>
-          {project.context && <h2>{project.context}</h2>}
+          {project.context && <h2>{l(project.context)}</h2>}
 
-          <p>{project.description}</p>
+          <p>{l(project.description)}</p>
 
           {project.role && (
             <>
-              <h3>Meu papel</h3>
-              <p>{project.role}</p>
+              <h3>{t("project.role")}</h3>
+              <p>{l(project.role)}</p>
             </>
           )}
 
           {tech.length > 0 && (
             <>
-              <h3>Tecnologias</h3>
+              <h3>{t("project.tech")}</h3>
               <ul className="tags">
                 {tech.map((t) => (
                   <li key={t}>{t}</li>
@@ -61,7 +64,7 @@ export default function ProjectScreen() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Ver no GitHub ▶
+            {t("project.github")} ▶
           </a>
         </div>
       </section>
